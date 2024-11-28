@@ -15,9 +15,6 @@ Este projeto é a parte do frontend do trabalho final da disciplina Desenvolvime
     yarn
     ```
 
-3. Configure as variáveis de ambiente:
-    Crie um arquivo `.env` na raiz do projeto e adicione as variáveis de ambiente conforme o exemplo em `.env.example`.
-
 ## Scripts Disponíveis
 
 - `npm run dev`: Inicia a aplicação em modo de desenvolvimento.
