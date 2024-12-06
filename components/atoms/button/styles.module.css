@@ -1,0 +1,114 @@
+.primary {
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: var(--tints_purple_200);
+  color: var(--neutrals_light_100);
+  font-family: var(--font-saira);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 3rem;
+  transition: all ease-in 100ms;
+}
+
+.secondary {
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: var(--tints_aqua_100);
+  color: var(--neutrals_dark_100);
+  font-family: var(--font-saira);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 3rem;
+  transition: all ease-in 100ms;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutrals_dark_100);
+  background: var(--tints_aqua_100);
+  width: 4.8rem;
+  height: 4.5rem;
+  border: none;
+  border-radius: 0.45rem;
+  outline: none;
+  transition: all ease-in 100ms;
+}
+
+.bordered {
+  display: inline-block;
+  width: 12rem;
+  height: 4.4rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 0.16rem solid #80d0d3;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-exo-2);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.tertiary {
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 1rem 2rem;
+  outline: none;
+  border: 2.19px solid var(--neutrals_dark_200);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--neutrals_dark_100);
+  font-family: var(--font-saira);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 3rem;
+  transition: all ease-in 100ms;
+}
+
+@media (min-width: 1024px) {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .bordered {
+    width: 30%;
+    padding: 0rem 0.4rem 0rem 0.4rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    transition: background 0.5s ease;
+  }
+
+  .bordered:hover {
+    border: 0px;
+    background: linear-gradient(90deg, #80d0d3 -9.05%, #cf00ee 191.81%);
+  }
+}
