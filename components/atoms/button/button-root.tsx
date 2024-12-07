@@ -10,7 +10,7 @@ interface ButtonRootProps {
   type?: Type;
 }
 
-type Variant = "primary" | "secondary" | "tertiary" | "icon" | "bordered";
+type Variant = "primary" | "secondary" | "bordered";
 
 type Type = "button" | "reset" | "submit";
 

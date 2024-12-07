@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Header, Footer } from "@/components";
+import { HomePage } from "@/containers";
 
 export default function Home() {
   return (
