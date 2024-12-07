@@ -1,0 +1,47 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 12rem;
+  background-color: var(--full-white);
+  width: 100%;
+  gap: 16rem;
+}
+
+.infoWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+.infoWrap > h1 {
+  font-family: var(--font-roboto);
+  font-size: 5.2rem;
+  font-weight: 700;
+  line-height: 6rem;
+  letter-spacing: -2px;
+  text-align: left;
+  width: 50%;
+}
+
+.infoWrap > p {
+  color: var(--primary-dark-blue);
+  font-family: var(--font-roboto);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 2.8rem;
+  letter-spacing: -0.1979999989271164px;
+  text-align: left;
+  width: 75%;
+}
+
+.infoWrap > .buttonWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  width: 50%;
+}

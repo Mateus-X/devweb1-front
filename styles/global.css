@@ -12,8 +12,22 @@ body {
 
 :root {
   font-size: 62.5%;
+  --primary-color: #00B2A3;
+  --primary-color-hoverized: #00A393;
 
-  --color-primary: #f3f3f3;
-  --color-secondary: #333;
+  --secondary-color: #2487BD;
+  --secondary-color-hoverized: #2079A9;
+
+  --full-white: #ffffff;
+  --primary-white: #f8f8f8;
+  --secondary-white: #f3f3f3;
+
+  --primary-black: #1a1a1a;
+  --secondary-black: #333333;
+
+  --primary-dark-blue: #000F33;
+
+
+  --gradient-primary2secondary: linear-gradient(90deg, #00B2A3 0%, #2487BD 100%);
   
 }
