@@ -26,7 +26,7 @@ export function Header() {
         </nav>
       </div>
       <div className={styles.authWrap}>
-        <Button.Root variant="bordered" onClick={() => router.push("/")}>
+        <Button.Root variant="bordered" onClick={() => router.push("/login")}>
           <Icon icon={"material-symbols:account-circle"} fontSize={"2rem"}/>
           <span>Fazer Login</span>
         </Button.Root>

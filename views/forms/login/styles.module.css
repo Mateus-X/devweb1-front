@@ -1,0 +1,26 @@
+.form {
+    font-family: var(--font-roboto);
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--neutrals_light_100);
+    border-radius: 8px;
+}
+
+.form h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primary-dark-blue);
+    text-align: center;
+}
+
+.form p {
+    font-size: 1.6rem;
+    color: var(--neutrals_gray_700);
+    text-align: center;
+}
+
