@@ -1,0 +1,66 @@
+.mobile {
+  display: none;
+}
+
+.desktop {
+  display: flex;
+  flex-direction: column;
+  background-image: var(--gradient-primary2secondary);
+  height: 100vh;
+  width: 20%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.profileInfo > .img {
+  border-radius: 50%;
+}
+
+.profileInfo > h1 {
+  font-family: var(--font-roboto);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 6rem;
+  letter-spacing: -2px;
+  text-align: left;
+  color: var(--primary-white);
+}
+
+.navigation {
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  list-style: none;
+  font-family: var(--font-roboto);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  letter-spacing: -1px;
+  text-align: left;
+}
+
+.navigation > .routes {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+}

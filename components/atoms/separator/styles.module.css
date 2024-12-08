@@ -1,0 +1,48 @@
+.primary {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.primary::before,
+.primary::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid;
+    color: var(--primary-white);
+
+}
+
+.texted {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+}
+
+.texted::before,
+.texted::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1.25px solid;
+}
+
+.texted:not(:empty)::before {
+    margin-right: 1.2rem;
+    color: #61646B;
+}
+
+.texted:not(:empty)::after {
+    margin-left: 1.2rem;
+    color: #61646B;
+}
+
+.texted > span {
+    font-family: var(--font-saira);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.8rem;
+    text-align: left;
+    color: #61646B;
+}
