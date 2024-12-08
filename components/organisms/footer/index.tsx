@@ -17,7 +17,7 @@ export function Footer() {
           linkedinLink="https://www.linkedin.com/in/fabio-arico/"
         />
         <Owner
-          imgSrc="/assets/pics/edu.jpg"
+          imgSrc="/assets/pics/edu.png"
           name="Edugay"
           githubLink="https://github.com/EduKaique/"
           linkedinLink="https://www.linkedin.com/in/eduardo-kaique-alberico/"

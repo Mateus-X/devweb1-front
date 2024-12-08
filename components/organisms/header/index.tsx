@@ -30,8 +30,8 @@ export function Header() {
           <Icon icon={"material-symbols:account-circle"} fontSize={"2rem"}/>
           <span>Fazer Login</span>
         </Button.Root>
-        <Button.Root variant="primary" onClick={() => router.push("/")}>
-          <span>Entrar</span>
+        <Button.Root variant="primary" onClick={() => router.push("/cadastro")}>
+          <span>Cadastra-se</span>
         </Button.Root>
       </div>
     </header>
