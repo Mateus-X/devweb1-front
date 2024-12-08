@@ -5,6 +5,11 @@ export { ControlledCheckboxInput } from "./features/form-fields/controlled-check
 export { ControlledDatePickerInput } from "./features/form-fields/controlled-datepicker-input";
 export { ControlledSelectInput } from "./features/form-fields/controlled-select-input";
 
+// FEATURES - ADDITIONS
+// export { KanbanBoard } from "./features/projects-kanban/kanban-board";
+// export { KanbanColumn } from "./features/projects-kanban/kanban-column";
+// export { KanbanCard } from "./features/projects-kanban/kanban-card";
+
 // ATOMS
 export { Icon } from "./atoms/icon"
 export { Button } from "./atoms/button"
