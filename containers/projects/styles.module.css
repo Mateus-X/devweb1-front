@@ -1,0 +1,39 @@
+.projects {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+  padding: 8rem 12rem;
+  width: 100%;
+  gap: 6rem;
+}
+
+.container > .title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.container .title > h1 {
+  font-family: var(--font-roboto);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 5.2rem;
+  letter-spacing: -2px;
+  text-align: left;
+  margin-right: auto;
+}
+
+.buttonWrap {
+    width: fit-content;
+}
+
+.container .title > button {
+    margin-left: auto;
+}
