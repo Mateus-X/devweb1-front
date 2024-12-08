@@ -17,10 +17,10 @@ export function Footer() {
           linkedinLink="https://www.linkedin.com/in/fabio-arico/"
         />
         <Owner
-          imgSrc="/assets/pics/fari.png"
+          imgSrc="/assets/pics/edu.png"
           name="Edugay"
-          githubLink="https://github.com/Mateus-X/"
-          linkedinLink="https://www.linkedin.com/in/fabio-arico/"
+          githubLink="https://github.com/EduKaique/"
+          linkedinLink="https://www.linkedin.com/in/eduardo-kaique-alberico/"
         />
       </div>
     </footer>

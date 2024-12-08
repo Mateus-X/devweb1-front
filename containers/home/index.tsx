@@ -1,8 +1,11 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
 export function HomePage() {
+  const router = useRouter();
   return (
     <section className={styles.home}>
       <div className={styles.infoWrap}>
@@ -12,7 +15,7 @@ export function HomePage() {
           progresso e alcance seus objetivos com eficiência em um só lugar.
         </p>
         <div className={styles.buttonWrap}>
-            <Button.Root variant="primary">Saiba mais</Button.Root>
+            <Button.Root variant="primary" onClick={() => router.push("/cadastro")} >Comece Agora</Button.Root>
             <Button.Root variant="secondary">Saiba mais</Button.Root>
         </div>
       </div>

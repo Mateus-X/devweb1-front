@@ -1,0 +1,13 @@
+.form {
+    font-family: var(--font-roboto);
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    background-color: var(--neutrals_light_100);
+    border-radius: 8px;
+}
+
+
