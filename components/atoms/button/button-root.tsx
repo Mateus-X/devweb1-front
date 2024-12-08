@@ -1,6 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import styles from "./styles.module.css";
+import { Icon } from "@/components";
 
 interface ButtonRootProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface ButtonRootProps {
   type?: Type;
 }
 
-type Variant = "primary" | "secondary" | "bordered";
+type Variant = "primary" | "secondary" | "bordered" | "cruder";
 
 type Type = "button" | "reset" | "submit";
 
@@ -30,6 +31,7 @@ export function ButtonRoot({
       disabled={disabled}
       type={type}
     >
+      {variant === "cruder" && <Icon fontSize="2.8rem" icon="simple-line-icons:plus"/>}
       {children}
     </button>
   );

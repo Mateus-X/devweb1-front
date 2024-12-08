@@ -1,2 +1,3 @@
-export { HomePage } from "./home/index";
-export { ProjectsPage } from "./projects/index";
+export { HomePage } from "./home";
+export { ProjectsPage } from "./projects";
+export { DevsPage } from "./dev";
