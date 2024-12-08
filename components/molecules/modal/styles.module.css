@@ -12,7 +12,6 @@
   justify-content: center;
 }
 
-/* this will be media queried to fulfill the entire page */
 .modalBackground .modalContainer {
   width: 100%;
   max-width: 60rem;
@@ -22,7 +21,6 @@
   flex-direction: column;
   gap: 1.2rem;
 }
-/*  */
 
 .modalBackground .modalContainer .modalContainerHeader {
   background: var(--neutrals_gray_900);
@@ -35,10 +33,10 @@
 }
 
 .modalBackground .modalContainer .modalContainerHeader p {
-  color: var(--neutrals_light_100);
-  font-family: var(--font_primary);
-  font-weight: 400;
-  font-size: 2rem;
+  color: var(--primary-black);
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 2.8rem;
   line-height: 2.8rem;
   text-align: justify;
 }
@@ -58,7 +56,7 @@
 
 .modalBackground .modalContainer .modalContainerBody p {
   color: var(--neutrals_gray_700);
-  font-family: var(--font_primary);
+  font-family: var(--font-roboto);
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2.2rem;
