@@ -16,7 +16,7 @@ import styles from "./styles.module.css";
 const routes = [
   { key: "1", label: "Home", icon: <Icon fontSize={"2rem"} icon="ic:outline-home" />, path: "/" },
   { key: "2", label: "Projetos", icon: <Icon fontSize={"2rem"} icon="ix:project" />, path: "/projetos" },
-  { key: "3", label: "Devs", icon: <Icon fontSize={"2rem"} icon="material-symbols:developer-mode-tv-outline-rounded" />, path: "/devs" },
+  // { key:  "3", label: "Devs", icon: <Icon fontSize={"2rem"} icon="material-symbols:developer-mode-tv-outline-rounded" />, path: "/devs" },
 ];
 
 export function Sidebar() {

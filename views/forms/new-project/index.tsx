@@ -13,14 +13,11 @@ import {
 } from "@/components";
 import styles from "./styles.module.css";
 import toast from "react-hot-toast";
-import { createProject, updateProject } from "@/services";
+import { createProject, updateProject, uploadProjectFile } from "@/services";
 import { Project, Status } from "@/types";
-import { uploadProjectFile } from "@/services"; // Certifique-se de importar a função corretamente
-
 
 interface FieldValues {
-  id?: string;
-  title: string;
+  name: string;
   description: string;
   startDate: string;
   endDate: string;
@@ -35,12 +32,9 @@ interface ApiError extends Error {
 }
 
 const schemaToCreate = yup.object().shape({
-  title: yup.string().max(255).label("Título").required("O título é obrigatório."),
+  name: yup.string().max(255).label("Título").required("O título é obrigatório."),
   description: yup.string().max(1000).label("Descrição").required("A descrição é obrigatória."),
-  startDate: yup
-    .string()
-    .label("Data Inicial")
-    .required("A data inicial é obrigatória."),
+  startDate: yup.string().label("Data Inicial").required("A data inicial é obrigatória."),
   endDate: yup
     .string()
     .label("Data Final")
@@ -49,9 +43,9 @@ const schemaToCreate = yup.object().shape({
       "is-after-initial-date",
       "A data final não pode ser anterior à data inicial.",
       function (value) {
-        const { startDate } = this.parent; // Acessa a data inicial
-        if (!startDate || !value) return true; // Permite validação para campos vazios
-        return new Date(value) >= new Date(startDate); // Verifica a relação entre as datas
+        const { startDate } = this.parent;
+        if (!startDate || !value) return true;
+        return new Date(value) >= new Date(startDate);
       }
     ),
   status: yup.string().max(255).label("Status"),
@@ -64,32 +58,35 @@ const schemaToCreate = yup.object().shape({
     .label("Foto do projeto"),
 });
 
-export function NewProjectForm({ userData, projectId }: { userData?: Project, projectId?: string }) {
+export function NewProjectForm({ userData }: { userData?: Project }) {
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
   const [isFullRegistered, setisFullRegistered] = useState(false);
-
-  const defaultValues: FieldValues = {
-    title: userData?.title || "",
-    description: userData?.description || "",
-    startDate: userData?.startDate || "",
-    endDate: userData?.endDate || "",
-    status: userData?.status || "",
-  };
+  const isUpdateMode = !!userData;
 
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm({
-    defaultValues: defaultValues,
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      status: "",
+    },
     resolver: yupResolver(schemaToCreate),
   });
 
   useEffect(() => {
     if (userData) {
       reset({
-        ...userData,
+        name: userData.name,
+        description: userData.description,
+        startDate: userData.startDate,
+        endDate: userData.endDate,
+        status: userData.status,
       });
     }
   }, [userData, reset]);
@@ -98,26 +95,25 @@ export function NewProjectForm({ userData, projectId }: { userData?: Project, pr
     setIsSubmittingForm(true);
     const formattedData = {
       ...data,
-      startDate: format(new Date(data.startDate), 'dd/MM/yyyy'),
-      endDate: format(new Date(data.endDate), 'dd/MM/yyyy'),
+      startDate: format(new Date(data.startDate), 'yyyy-MM-dd'),
+      endDate: format(new Date(data.endDate), 'yyyy-MM-dd'),
     };
-  
+
     try {
       let project;
-      if (projectId) {
-        project = await updateProject(projectId, formattedData as Project);
+      if (userData) {
+        project = await updateProject(userData.id, formattedData as Project);
         toast.success("Projeto atualizado com sucesso!");
       } else {
-        // Create new project
         project = await createProject(formattedData as Project);
         toast.success("Projeto criado com sucesso!");
       }
-  
+
       if (data.imageSrc && project.id) {
         await uploadProjectFile(project.id, data.imageSrc);
         toast.success("Arquivo enviado com sucesso!");
       }
-  
+
       setisFullRegistered(true);
     } catch (error) {
       const apiError = error as ApiError;
@@ -144,11 +140,11 @@ export function NewProjectForm({ userData, projectId }: { userData?: Project, pr
         <div className={styles.line}>
           <ControlledInput<FieldValues>
             label="Título"
-            name="title"
+            name="name"
             placeholder="Insira o título do projeto"
             control={control}
             disabled={isSubmitting}
-            errorMessage={errors.title?.message}
+            errorMessage={errors.name?.message}
           />
         </div>
         <div className={styles.line}>
@@ -188,10 +184,19 @@ export function NewProjectForm({ userData, projectId }: { userData?: Project, pr
             errorMessage={errors.status?.message}
             options={[
               { label: "Backlog", value: Status.BACKLOG },
-              { label: "À Fazer", value: "1" },
-              { label: "Fazendo", value: "2" },
-              { label: "Terminado", value: "3" },
-            ]} // ENUM
+              { label: "À Fazer", value: Status.TODO },
+              { label: "Fazendo", value: Status.ON_PROCESS },
+              { label: "Terminado", value: Status.DONE },
+            ]}
+          />
+        </div>
+        <div className={styles.line}>
+          <ControlledFileInput<FieldValues>
+            label="Foto do projeto"
+            name="imageSrc"
+            control={control}
+            disabled={isSubmitting}
+            errorMessage={errors.imageSrc?.message}
           />
         </div>
       </div>
@@ -201,7 +206,7 @@ export function NewProjectForm({ userData, projectId }: { userData?: Project, pr
           variant="secondary"
           disabled={isSubmittingForm}
         >
-          Enviar
+          {isUpdateMode ? "Atualizar" : "Enviar"}
         </Button.Root>
       </div>
     </form>

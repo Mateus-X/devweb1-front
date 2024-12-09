@@ -13,8 +13,8 @@ export function Navbar() {
             <li>Soluções</li>
             <li>Contato</li>
         </ul>
-        <Button onClick={() => router.push("/login")}>Entrar</Button>
-        <Button onClick={() => router.push("/cadastro")}>Cadastrar</Button>
+        <Button.Root variant="secondary" onClick={() => router.push("/login")}>Entrar</Button.Root>
+        <Button.Root onClick={() => router.push("/cadastro")}>Cadastrar</Button.Root>
     </nav>
   );
 }

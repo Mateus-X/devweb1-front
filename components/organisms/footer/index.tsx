@@ -18,7 +18,7 @@ export function Footer() {
         />
         <Owner
           imgSrc="/assets/pics/fari.png"
-          name="Edugay"
+          name="Edu"
           githubLink="https://github.com/Mateus-X/"
           linkedinLink="https://www.linkedin.com/in/fabio-arico/"
         />

@@ -11,7 +11,7 @@ interface ButtonRootProps {
   type?: Type;
 }
 
-type Variant = "primary" | "secondary" | "bordered" | "cruder";
+type Variant = "primary" | "secondary" | "bordered" | "cruder" | "mini";
 
 type Type = "button" | "reset" | "submit";
 

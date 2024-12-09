@@ -1,7 +1,7 @@
 export enum Status {
-    Backlog = "Backlog",
-    Todo = "À Fazer",
-    OnProcess = "Fazendo",
-    Done = "Terminado"
+    BACKLOG = "BACKLOG",
+    TODO = "TODO",
+    ON_PROCESS = "ON_PROCESS",
+    DONE = "DONE"
 }
 

@@ -25,8 +25,11 @@ export async function uploadProjectFile(projectId: string, file: File) {
 
 export async function getAllProjects() {
   const response = await api.get("/projects");
+  console.log(response.data);
   return response.data;
+
 }
+
 
 export async function getProjectById(projectId: string) {
   const response = await api.get(`/projects/${projectId}`);

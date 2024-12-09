@@ -1,26 +1,35 @@
 "use client";
-import { useEffect, useState } from "react";
-import { api } from "@/services/api";
-import styles from "./styles.module.css";
-import { Button, Icon, ProjectCard } from "@/components";
-import { Sidebar } from "@/components";
-import { Modal } from "@/components";
-import { NewProjectForm } from "@/views";
-import { Project } from "@/types";
+import React, { useState, useEffect } from "react";
+import { Button, Modal, ProjectCard, Sidebar } from "@/components";
 import { getAllProjects } from "@/services";
+import { Project } from "@/types";
+import { NewProjectForm } from "@/views/forms/new-project";
+import styles from "./styles.module.css";
 
 export function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | undefined>(undefined);
+
+  const updateForm = (project: Project) => {
+    setIsUpdateMode(true);
+    setSelectedProject(project);
+    setModalOpen(true);
+  };
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+    if (!modalOpen) {
+      setIsUpdateMode(false);
+      setSelectedProject(undefined);
+    }
   };
 
   const fetchProjects = async () => {
     try {
       const response = await getAllProjects();
-      setProjects(response.data);
+      setProjects(response);
     } catch (error) {
       console.error("Erro ao buscar projetos:", error);
     }
@@ -46,14 +55,17 @@ export function ProjectsPage() {
           <div className={styles.wrap}>
             {projects && projects.length > 0 ? (
               projects.map((project) => (
-                <ProjectCard
-                  id={project.id}
-                  title={project.title}
-                  description={project.description}
-                  startDate={project.startDate}
-                  endDate={project.endDate}
-                  status={project.status}
-                />
+                <div className={styles.cardWrap} key={project.id}>
+                  <Button.Root variant="mini" onClick={() => updateForm(project)}>Editar</Button.Root>
+                  <ProjectCard
+                    id={project.id}
+                    name={project.name}
+                    description={project.description}
+                    startDate={project.startDate}
+                    endDate={project.endDate}
+                    status={project.status}
+                  />
+                </div>
               ))
             ) : (
               <p>Sem Projetos Cadastrados</p>
@@ -63,9 +75,9 @@ export function ProjectsPage() {
       </section>
       {modalOpen && (
         <Modal.Root onClick={toggleModal}>
-          <Modal.Header title="Adicionar projeto" onClick={toggleModal} />
+          <Modal.Header title={isUpdateMode ? "Atualizar projeto" : "Adicionar projeto"} onClick={toggleModal} />
           <Modal.Body>
-            <NewProjectForm />
+            <NewProjectForm userData={isUpdateMode ? selectedProject : undefined} />
           </Modal.Body>
         </Modal.Root>
       )}

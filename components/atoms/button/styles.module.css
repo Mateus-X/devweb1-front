@@ -73,6 +73,27 @@
   background: var(--secondary-color-hoverized);
 }
 
+.mini {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.6rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: var(--primary-white);
+  font-family: var(--font-roboto);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  text-align: center;
+  transition: all ease-in 100ms;
+  cursor: pointer;
+}
+
 .bordered {
   width: 100%;
   display: flex;
