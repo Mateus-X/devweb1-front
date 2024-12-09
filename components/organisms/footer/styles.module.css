@@ -25,3 +25,31 @@
     justify-content: space-between;
     gap: 40rem;
 }
+
+@media (max-width: 768px) {
+  .footer > .hotWrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer > h1 {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 3rem;
+  }
+
+  .footer > h1 {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
+
+  .footer > .hotWrap {
+    gap: 1.5rem;
+  }
+}

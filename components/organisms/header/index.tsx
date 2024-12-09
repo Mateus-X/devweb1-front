@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import Image from "next/image";
@@ -7,11 +8,19 @@ import { text } from "stream/consumers";
 
 export function Header() {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
     <header className={styles.header}>
       <div className={styles.textWrap}>
         <h1 onClick={() => router.push("/")} style={{ cursor: "pointer" }}>Sprint<span>Board</span></h1>
-        <nav>
+        <button className={styles.toggler} onClick={toggleMenu}>
+          <Icon icon={"material-symbols:menu"} fontSize={"2rem"} />
+        </button>
+        <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
           <ul>
             <li>
               <Hiperlink text="Produto" onClick={() => router.push("/")} />

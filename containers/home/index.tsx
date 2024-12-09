@@ -19,13 +19,15 @@ export function HomePage() {
             <Button.Root variant="secondary">Saiba mais</Button.Root>
         </div>
       </div>
-      <Image
-        src="/assets/images/collection.svg"
-        alt="Imagem de um computador com gráficos"
-        width={600}
-        height={600}
-        priority
-      />
+      <div className={styles.image}>
+        <Image
+          src="/assets/images/collection.svg"
+          alt="Imagem de um computador com gráficos"
+          width={500}
+          height={500}
+          priority
+        />
+      </div>
     </section>
   );
 }
