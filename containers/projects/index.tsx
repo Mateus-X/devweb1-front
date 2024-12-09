@@ -7,6 +7,7 @@ import { Sidebar } from "@/components";
 import { Modal } from "@/components";
 import { NewProjectForm } from "@/views";
 import { Project } from "@/types";
+import { getAllProjects } from "@/services";
 
 export function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,7 +19,7 @@ export function ProjectsPage() {
 
   const fetchProjects = async () => {
     try {
-      const response = await api.get(`${process.env.API_URL}/projects`);
+      const response = await getAllProjects();
       setProjects(response.data);
     } catch (error) {
       console.error("Erro ao buscar projetos:", error);
@@ -43,15 +44,15 @@ export function ProjectsPage() {
             </div>
           </div>
           <div className={styles.wrap}>
-            {projects.length > 0 ? (
+            {projects && projects.length > 0 ? (
               projects.map((project) => (
                 <ProjectCard
-                  key={project.id}
-                  imageSrc={project.imageSrc}
+                  id={project.id}
                   title={project.title}
                   description={project.description}
                   startDate={project.startDate}
                   endDate={project.endDate}
+                  status={project.status}
                 />
               ))
             ) : (

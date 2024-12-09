@@ -6,6 +6,7 @@ export interface Developer {
     email: string;
     password: string;
     isAdmin: boolean;
+    imageSrc: string;
     tasks: Task[];
     projects: Project[];
     comments: Comment[];

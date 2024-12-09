@@ -42,6 +42,7 @@ export function ControlledSelectInput<T extends FieldValues>({
                             value={value}
                             onBlur={onBlur}
                             onChange={onChange}
+                            style={{ width: "100%" }}
                             {...selectProps}
                         />
                     </div>

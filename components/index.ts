@@ -4,6 +4,7 @@ export { ControlledPasswordInput } from "./features/form-fields/controlled-passw
 export { ControlledCheckboxInput } from "./features/form-fields/controlled-checkbox-input";
 export { ControlledDatePickerInput } from "./features/form-fields/controlled-datepicker-input";
 export { ControlledSelectInput } from "./features/form-fields/controlled-select-input";
+export { ControlledFileInput } from "./features/form-fields/controlled-file-input";
 
 // FEATURES - ADDITIONS
 // export { KanbanBoard } from "./features/projects-kanban/kanban-board";

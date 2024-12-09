@@ -1,23 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import { format } from "date-fns";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import yup from "@/configs/yup";
 import {
   Button,
   ControlledDatePickerInput,
+  ControlledFileInput,
   ControlledInput,
+  ControlledSelectInput,
 } from "@/components";
 import styles from "./styles.module.css";
 import toast from "react-hot-toast";
+import { createProject, updateProject } from "@/services";
+import { Project, Status } from "@/types";
+import { uploadProjectFile } from "@/services"; // Certifique-se de importar a função corretamente
+
 
 interface FieldValues {
-  title?: string;
-  description?: string;
-  initial_date: string;
-  final_date: string;
+  id?: string;
+  title: string;
+  description: string;
+  startDate: string;
+  endDate: string;
   status?: string;
-  image?: string;
+  imageSrc?: File;
 }
 
 interface ApiError extends Error {
@@ -27,55 +35,96 @@ interface ApiError extends Error {
 }
 
 const schemaToCreate = yup.object().shape({
-    title: yup.string().max(255).label("Título"),
-    description: yup.string().max(1000).label("Descrição"),
-    initial_date: yup
-      .string()
-      .label("Data Inicial")
-      .required("A data inicial é obrigatória."),
-    final_date: yup
-      .string()
-      .label("Data Final")
-      .required("A data final é obrigatória.")
-      .test(
-        "is-after-initial-date",
-        "A data final não pode ser anterior à data inicial.",
-        function (value) {
-          const { initial_date } = this.parent; // Acessa a data inicial
-          if (!initial_date || !value) return true; // Permite validação para campos vazios
-          return new Date(value) >= new Date(initial_date); // Verifica a relação entre as datas
-        }
-      ),
-    status: yup.string().max(255).label("Status"),
-    image: yup.string().url().label("Imagem"),
-  });
-  
+  title: yup.string().max(255).label("Título").required("O título é obrigatório."),
+  description: yup.string().max(1000).label("Descrição").required("A descrição é obrigatória."),
+  startDate: yup
+    .string()
+    .label("Data Inicial")
+    .required("A data inicial é obrigatória."),
+  endDate: yup
+    .string()
+    .label("Data Final")
+    .required("A data final é obrigatória.")
+    .test(
+      "is-after-initial-date",
+      "A data final não pode ser anterior à data inicial.",
+      function (value) {
+        const { startDate } = this.parent; // Acessa a data inicial
+        if (!startDate || !value) return true; // Permite validação para campos vazios
+        return new Date(value) >= new Date(startDate); // Verifica a relação entre as datas
+      }
+    ),
+  status: yup.string().max(255).label("Status"),
+  imageSrc: yup
+    .mixed<File>()
+    .test("fileType", "Formato de arquivo inválido", (value) => {
+      if (!value) return true;
+      return value instanceof File;
+    })
+    .label("Foto do projeto"),
+});
 
-export function NewProjectForm(userData: any) {
+export function NewProjectForm({ userData, projectId }: { userData?: Project, projectId?: string }) {
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
   const [isFullRegistered, setisFullRegistered] = useState(false);
 
   const defaultValues: FieldValues = {
-    title: userData.title,
-    description: userData.description,
-    initial_date: userData.initial_date,
-    final_date: userData.final_date,
-    status: userData.status,
-    image: userData.image,
+    title: userData?.title || "",
+    description: userData?.description || "",
+    startDate: userData?.startDate || "",
+    endDate: userData?.endDate || "",
+    status: userData?.status || "",
   };
 
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     defaultValues: defaultValues,
     resolver: yupResolver(schemaToCreate),
   });
 
-  function onSubmit() {
-    setisFullRegistered(true);
-    toast.success("Cadastro completo!");
+  useEffect(() => {
+    if (userData) {
+      reset({
+        ...userData,
+      });
+    }
+  }, [userData, reset]);
+
+  async function onSubmit(data: FieldValues) {
+    setIsSubmittingForm(true);
+    const formattedData = {
+      ...data,
+      startDate: format(new Date(data.startDate), 'dd/MM/yyyy'),
+      endDate: format(new Date(data.endDate), 'dd/MM/yyyy'),
+    };
+  
+    try {
+      let project;
+      if (projectId) {
+        project = await updateProject(projectId, formattedData as Project);
+        toast.success("Projeto atualizado com sucesso!");
+      } else {
+        // Create new project
+        project = await createProject(formattedData as Project);
+        toast.success("Projeto criado com sucesso!");
+      }
+  
+      if (data.imageSrc && project.id) {
+        await uploadProjectFile(project.id, data.imageSrc);
+        toast.success("Arquivo enviado com sucesso!");
+      }
+  
+      setisFullRegistered(true);
+    } catch (error) {
+      const apiError = error as ApiError;
+      toast.error(apiError.message);
+    } finally {
+      setIsSubmittingForm(false);
+    }
   }
 
   return (
@@ -115,39 +164,34 @@ export function NewProjectForm(userData: any) {
         <div className={styles.line}>
           <ControlledDatePickerInput<FieldValues>
             label="Data Inicial"
-            name="initial_date"
+            name="startDate"
             placeholder="__/__/____"
             control={control}
             disabled={isSubmitting}
-            errorMessage={errors.initial_date?.message}
+            errorMessage={errors.startDate?.message}
           />
           <ControlledDatePickerInput<FieldValues>
             label="Data Final"
-            name="final_date"
+            name="endDate"
             placeholder="__/__/____"
             control={control}
             disabled={isSubmitting}
-            errorMessage={errors.final_date?.message}
+            errorMessage={errors.endDate?.message}
           />
         </div>
         <div className={styles.line}>
-          <ControlledInput<FieldValues>
+          <ControlledSelectInput<FieldValues>
             label="Status"
             name="status"
-            placeholder="Insira o status do projeto"
             control={control}
             disabled={isSubmitting}
             errorMessage={errors.status?.message}
-          />
-        </div>
-        <div className={styles.line}>
-          <ControlledInput<FieldValues>
-            label="Imagem"
-            name="image"
-            placeholder="Insira a URL da imagem"
-            control={control}
-            disabled={isSubmitting}
-            errorMessage={errors.image?.message}
+            options={[
+              { label: "Backlog", value: Status.BACKLOG },
+              { label: "À Fazer", value: "1" },
+              { label: "Fazendo", value: "2" },
+              { label: "Terminado", value: "3" },
+            ]} // ENUM
           />
         </div>
       </div>

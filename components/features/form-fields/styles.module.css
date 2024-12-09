@@ -7,6 +7,30 @@
   gap: 0.6rem;
 }
 
+.fileInput {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border: 1.5px solid var(--neutrals_gray_200);
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  display: inherit;
+}
+
+.fileInput:hover {
+  border: 1px solid var(--input_border_200) !important;
+}
+
+.fileInput:focus {
+  outline: none;
+  border: 1px solid var(--input_border_200) !important;
+}
+
 .label {
   color: var(--neutrals_dark_500);
   font-family: var(--font-saira);
@@ -232,6 +256,7 @@
   font-style: normal !important;
   font-weight: 400 !important;
   line-height: normal !important;
+  display: inherit;
 }
 
 .errorLabel {
@@ -241,6 +266,7 @@
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 2.4rem;
+  display: inherit;
 }
 .errorInput,
 .errorPasswordInput {
@@ -256,6 +282,7 @@
   line-height: 2.4rem;
   transition: all ease-in 100ms;
   width: 100%;
+  display: inherit;
 }
 .errorTextarea {
   height: 4.8rem;
