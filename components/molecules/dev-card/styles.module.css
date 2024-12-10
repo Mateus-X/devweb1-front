@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    background-color: var(--primary-gray);
+    width: fit-content;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--secondary-gray);
+}
+
+.card > .image {
+    border-radius: 50%;
+}
+
+.card > p {
+    font-family: var(--font-roboto);
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 6rem;
+    text-align: left;
+}

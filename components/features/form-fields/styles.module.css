@@ -1,0 +1,343 @@
+.controlledInputContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.fileInput {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border: 1.5px solid var(--neutrals_gray_200);
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  display: inherit;
+}
+
+.fileInput:hover {
+  border: 1px solid var(--input_border_200) !important;
+}
+
+.fileInput:focus {
+  outline: none;
+  border: 1px solid var(--input_border_200) !important;
+}
+
+.label {
+  color: var(--neutrals_dark_500);
+  font-family: var(--font-saira);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.inputContainer > svg {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  transition: all ease-in 100ms;
+}
+
+.inputContainer > svg:hover {
+  cursor: pointer;
+  fill: var(--tints_primary_500);
+}
+
+.checkboxLabel {
+  color: var(--neutrals_gray_700);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.input,
+.passwordInput {
+  height: 4.8rem;
+  padding: 1rem 1.8rem;
+  outline: none;
+  border: 1.5px solid var(--neutrals_gray_200);
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  width: 100%;
+}
+.passwordInput {
+  padding: 1rem 4rem 1rem 1.8rem;
+}
+
+.controlledInputContainer input[type="checkbox"] {
+  accent-color: var(--tints_primary_500);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--neutrals_gray_200);
+}
+
+.input::placeholder,
+.passwordInput::placeholder {
+  color: var(--neutrals_gray_600);
+}
+
+.input:hover,
+.passwordInput:hover {
+  border: 1px solid var(--input_border_200) !important;
+}
+
+.input:focus,
+.passwordInput:focus {
+  outline: none;
+  border: 1px solid var(--input_border_200) !important;
+}
+
+.textarea {
+  height: 4.8rem;
+  padding: 1rem 1.8rem;
+  outline: none;
+  border: 1px solid var(--neutrals_gray_100);
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  width: 100%;
+  min-height: 10rem;
+}
+
+.textarea::placeholder {
+  color: var(--neutrals_gray_600);
+}
+
+.textarea:hover {
+  border: 1px solid var(--input_border_100);
+}
+
+.textarea:focus {
+  border: 1px solid var(--input_border_200);
+}
+
+.selectContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.selectContent {
+  width: 100%;
+  height: 5rem;
+  background: var(--neutrals_light_100);
+  position: relative;
+}
+
+.selectContentActive .select-dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filterBackground {
+  display: none;
+}
+
+.filterBackgroundActive {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  z-index: 940;
+}
+
+.selectButton {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--neutrals_gray_100);
+  cursor: pointer;
+}
+
+.selectedSpan {
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400 !important;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.listOptions {
+  background-color: var(--neutrals_light_100);
+  border: 1px solid var(--neutrals_gray_100);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+  list-style: none;
+  width: 100%;
+  position: absolute;
+  max-height: 20rem;
+  overflow-y: auto;
+  margin-top: 0.4rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 100ms ease;
+  z-index: 945;
+}
+
+.selectContentActive .listOptions {
+  opacity: 1;
+  visibility: visible;
+}
+
+.listOption {
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+}
+
+.listOption:hover {
+  background: var(--tints_primary_100);
+}
+
+.listInput {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+.listInput:focus + .listLabel {
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+}
+
+.listLabel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: var(--status_danger_200) !important;
+  font-family: var(--font-saira) !important;
+  font-size: 1.2rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  display: inherit;
+}
+
+.errorLabel {
+  color: var(--status_danger_200) !important;
+
+  font-family: var(--font-saira);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  display: inherit;
+}
+.errorInput,
+.errorPasswordInput {
+  height: 4.8rem;
+  padding: 1rem 1.8rem;
+  outline: none;
+  border: 1.25px solid var(--status_danger_200) !important;
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  width: 100%;
+  display: inherit;
+}
+.errorTextarea {
+  height: 4.8rem;
+  padding: 1rem 1.8rem;
+  outline: none;
+  border: 1px solid var(--status_danger_400);
+  background: var(--neutrals_light_100);
+  color: var(--neutrals_gray_900);
+  font-family: var(--font_primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  transition: all ease-in 100ms;
+  width: 100%;
+  min-height: 10rem;
+}
+
+.errorPasswordInput {
+  padding: 1rem 4rem 1rem 1.8rem;
+}
+.errorInput::placeholder,
+.errorPasswordInput::placeholder,
+.errorTextarea::placeholder {
+  color: var(--status_danger_500);
+}
+.errorInput:hover,
+.errorPasswordInput:hover,
+.errorSelectButton:hover,
+.errorTextarea:hover {
+  border: 1px solid var(--status_danger_200) !important;
+}
+.errorInput:focus,
+.errorPasswordInput:focus,
+.errorSelectButton:focus,
+.errorTextarea:focus {
+  border: 1px solid var(--status_danger_100);
+  box-shadow: 0 0 0 2px var(--box_shadow_error_input) !important;
+}
+
+.errorSelectButton {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--status_danger_400);
+  cursor: pointer;
+}
+
+.errorSelectedSpan {
+  color: var(--status_danger_500) !important;
+  font-family: var(--font_primary);
+  font-weight: 400 !important;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}

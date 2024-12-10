@@ -1,0 +1,72 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBackground .modalContainer {
+  width: 100%;
+  max-width: 60rem;
+  margin: 2rem;
+  background: var(--neutrals_light_100);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.modalBackground .modalContainer .modalContainerHeader {
+  background: var(--neutrals_gray_900);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.modalBackground .modalContainer .modalContainerHeader p {
+  color: var(--primary-black);
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  text-align: justify;
+}
+
+.modalBackground .modalContainer .modalContainerHeader .icon:hover {
+  cursor: pointer;
+}
+
+.modalBackground .modalContainer .modalContainerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.modalBackground .modalContainer .modalContainerBody p {
+  color: var(--neutrals_gray_700);
+  font-family: var(--font-roboto);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+}
+
+.modalBackground .modalContainer .modalContainerFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 2rem;
+  border-top: 1px solid var(--neutrals_gray_200);
+}
